@@ -139,7 +139,7 @@ addMultipleSongs();
 break;
 case 3: playNext(); break;
 case 4: playPrevious(); break;
-case 5: show() break;
+case 5: show(); break;
 case 6: shuffle(); cout<<"playlist shuffled!\n"; break;
 case 7:
 repeatMode =!repeatMode;
