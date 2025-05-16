@@ -53,3 +53,35 @@ void load() {
     current = head;
     file.close();
 }
+/*Crete the funtion that work for show the list and add multiple and single songs 
+Complet by Biruk Tibebe*/
+void show() {
+    if (!head) cout << "Playlist is empty\n";
+    else for (Node* temp = head; temp; temp = temp->next)
+        cout << temp->song->id << ". " << temp->song->title
+             << (temp == current ? " [PLAYING]" : "") << "\n";
+}
+
+void addSong(string title, string artist, bool saveToFile) {
+    Node* newNode = new Node{new Song{nextId++, title, artist}, tail, nullptr};
+    (head ? tail->next : head) = newNode;
+    tail = newNode;
+    if (saveToFile) save();
+}
+
+void addMultipleSongs() {
+    int count;
+    cout << "How many songs to add? ";
+    cin >> count;
+    cin.ignore();
+
+    for (int i = 0; i < count; i++) {
+        string title, artist;
+        cout << "\nSong #" << i+1 << ":\n";
+        cout << "Title: "; getline(cin, title);
+        cout << "Artist: "; getline(cin, artist);
+        addSong(title, artist, false);
+    }
+    save();
+    cout << "\nAdded " << count << " songs!\n";
+}
