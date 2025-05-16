@@ -98,3 +98,16 @@ void playPrevious() {
     else if (current->prev) cout << "Now playing: " << (current = current->prev)->song->title << "\n";
     else cout << "Start of playlist\n";
 }
+// added shuffle function by Bereket
+void shuffle() {
+    srand(time(0));
+    int count = 0;
+    for (Node* t = head; t; t = t->next) count++;
+    for (int i = count-1; i > 0; i--) {
+        Node *a = head, *b = head;
+        for (int k = i; k--; a = a->next);
+        for (int k = rand()%(i+1); k--; b = b->next);
+        swap(a->song, b->song);
+    }
+    save();
+}
