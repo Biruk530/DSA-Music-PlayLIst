@@ -26,7 +26,7 @@ void playPrevious();
 void shuffle();
 
 /* Function implementations 
-   start by Addishiwot Abdisa by creating "save" and "load" functions*/
+   start by Addishiwot Abdisa creating "save" and "load" functions*/
 void save() {
     ofstream file(fileName);
     for (Node* temp = head; temp; temp = temp->next)
