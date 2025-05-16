@@ -85,3 +85,16 @@ void addMultipleSongs() {
     save();
     cout << "\nAdded " << count << " songs!\n";
 }
+// added play next and previous functions by Bahiru
+void playNext() {
+    if (!current) cout << "Playlist empty\n";
+    else if (repeatMode) cout << "Repeating: " << current->song->title << "\n";
+    else if (current->next) cout << "Now playing: " << (current = current->next)->song->title << "\n";
+    else cout << "End of playlist\n";
+}
+
+void playPrevious() {
+    if (!current) cout << "Playlist empty\n";
+    else if (current->prev) cout << "Now playing: " << (current = current->prev)->song->title << "\n";
+    else cout << "Start of playlist\n";
+}
