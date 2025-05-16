@@ -111,3 +111,51 @@ void shuffle() {
     }
     save();
 }
+
+/*Create the main function to the function implment by my gourp members*/
+int main() {
+load();
+int choice;
+string title, artist;
+
+do {
+cout<<"\n=== Playlist Manager ===\n";
+cout<<"1.Add single song\n2. Add Multiple Songs\n3. play Next\n";
+cout<<"4.play previous\n5.show playlist\n6.shuffle\n";
+cout<<"7.Toggle Repeat\n8.Exit\n";
+cout<<"Enter the your choice 1-8\n> ";
+cin >> choice;
+cin.ignore();
+
+switch (choice){
+case 1:
+cout<<"Title: "; getline(cin, title);
+cout<<"Artist: "; getline(cin, artist);
+addSong(title, artist);
+cout<<"Song added!\n";
+break;
+case 2:
+addMultipleSongs();
+break;
+case 3: playNext(); break;
+case 4: playPrevious(); break;
+case 5: show() break;
+case 6: shuffle(); cout<<"playlist shuffled!\n"; break;
+case 7:
+repeatMode =!repeatMode;
+cout<<"Repeat " <<(repeatMode ? "ON" : "OFF") << "\n";
+break;
+case 8: cout<<"Exiting....\n"; break;
+default: cout<<"Invalid choice\n"; 
+}
+}while (choice != 8);
+
+//cleanup
+while (head){
+Node* temp = head;
+head = head->next;
+delete temp->song;
+delete temp;
+}
+return 0;
+}
